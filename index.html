@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Task Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Today</p>
+        <h1>Daily Task Tracker</h1>
+        <p class="lede">
+          Add what you need to do, check it off when it is done, and come back
+          later. Your list stays in this browser.
+        </p>
+      </header>
+
+      <!-- The form only collects a title. script.js checks that it is not blank. -->
+      <form id="task-form" class="task-form" novalidate>
+        <label for="task-title">Task title</label>
+        <div class="form-row">
+          <input
+            id="task-title"
+            name="title"
+            type="text"
+            maxlength="120"
+            autocomplete="off"
+            placeholder="Walk the dog, reply to email…"
+            aria-describedby="form-error"
+          />
+          <button type="submit" class="btn btn-primary">Add task</button>
+        </div>
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+      </form>
+
+      <section class="stats" aria-label="Task summary" aria-live="polite">
+        <p class="stat">
+          <span id="total-count">0</span>
+          <span class="stat-label">total tasks</span>
+        </p>
+        <p class="stat">
+          <span id="completed-count">0</span>
+          <span class="stat-label">completed</span>
+        </p>
+      </section>
+
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">
+          All Tasks
+        </button>
+        <button type="button" class="filter-btn" data-filter="pending" aria-pressed="false">
+          Pending
+        </button>
+        <button type="button" class="filter-btn" data-filter="completed" aria-pressed="false">
+          Completed
+        </button>
+      </div>
+
+      <section class="list-panel" aria-labelledby="list-heading">
+        <h2 id="list-heading" class="visually-hidden">Your tasks</h2>
+        <p id="empty-message" class="empty-message">
+          No tasks yet. Add a title above and it will show up here.
+        </p>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
